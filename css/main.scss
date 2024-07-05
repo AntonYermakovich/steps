@@ -1,0 +1,255 @@
+:root {
+  --primary-color: #ef7f1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 375px;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.steps {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.step {
+  width: 100%;
+  text-align: center;
+
+  &:first-child .step__number::before,
+  &:first-child .step__number::after {
+    display: none;
+  }
+
+  &_active {
+    .step__title {
+      color: var(--primary-color);
+      transition-delay: 0.25s;
+    }
+
+    .step__number {
+      span {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        background: #fff;
+        transition-delay: 0.25s;
+      }
+
+      &::after {
+        background: var(--primary-color);
+        transition-delay: 0.25s;
+      }
+
+      &::before {
+        animation: animateStep 0.25s linear forwards;
+      }
+    }
+  }
+
+  &_completed {
+    position: relative;
+
+    .step__title {
+      color: #000;
+    }
+
+    .step__number {
+      span {
+        border-color: var(--primary-color);
+        color: transparent;
+        background: var(--primary-color);
+
+        &::after {
+          content: "";
+          width: 15px;
+          height: 8px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -60%) rotate(-45deg);
+          border-left: 3px solid #fff;
+          border-bottom: 3px solid #fff;
+          border-radius: 0 0 0 3px;
+        }
+      }
+
+      &::after {
+        background: var(--primary-color);
+      }
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #aaa;
+    transition: 0.25s;
+  }
+
+  &__number {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 4px;
+      border-radius: 10px;
+      background: #ddd;
+      transition: 0.25s;
+    }
+
+    &::before {
+      background: var(--primary-color);
+      z-index: 1;
+      transform: translate(-50%, -50%) scaleX(0);
+      transform-origin: left;
+    }
+
+    span {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      color: #888;
+      background: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      position: relative;
+      z-index: 5;
+      transition: 0.25s;
+    }
+  }
+}
+
+.content {
+  margin-top: 5px;
+  width: 100%;
+  min-height: 70px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  width: 100%;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    transition: 0.25s;
+  }
+}
+
+.tab {
+  width: 100%;
+  min-height: 400px;
+  // height: fit-content;
+  flex: 0 0 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+
+  &__thx {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &__actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.btn {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: #fff;
+  font-size: 20px;
+  // height: 100%;
+  // width: 100%;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.15s;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  &:hover {
+    background: var(--primary-color);
+    color: #fff;
+  }
+}
+
+@keyframes animateStep {
+  100% {
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+}
+
+@media (max-width: 600px) {
+  // .container {
+  //   max-width: 375px;
+  // }
+
+  .step__number::before,
+  .step__number::after {
+    width: 50%;
+  }
+
+  .form__title {
+    font-size: 20px;
+  }
+}
