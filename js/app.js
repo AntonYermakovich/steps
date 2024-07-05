@@ -7,7 +7,7 @@ const classCompleted = "step_completed";
 const forms = document.querySelectorAll(".form");
 const tabs = document.querySelectorAll(".tab");
 const tabsContainer = document.querySelector(".tabs__container");
-let tabClientWith = tabs[0].clientWidth;
+let tabClientWith = tabs[0].clientWidth + (tabs[0].clientLeft * 2);
 let step = 0;
 
 nextBtn.forEach((btn) => btn.addEventListener("click", nextStep));
@@ -83,11 +83,11 @@ function debounce(func, ms) {
 }
 
 function resizeWindow() {
-  tabClientWith = tabs[0].clientWidth;
+  tabClientWith = tabs[0].clientWidth + (tabs[0].clientLeft * 2);
   changeSlide(tabClientWith * step);
 }
 
 window.addEventListener("resize", debounce(resizeWindow, 200));
 
 
-
+console.log(tabs[0].clientLeft)

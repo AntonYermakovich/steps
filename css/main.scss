@@ -171,10 +171,6 @@ body {
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
-  background-color: var(--dark);
-  background-image: url('../img/bg-search-vin.webp');
-  background-repeat: no-repeat;
-  background-position: right bottom;
 
   &__container {
     display: flex;
@@ -185,7 +181,7 @@ body {
 .tab {
   width: 100%;
   min-height: 400px;
-  // height: fit-content;
+  border: 1px solid #ccc;
   flex: 0 0 100%;
   border-radius: 10px;
   padding: 10px 20px;
@@ -245,9 +241,9 @@ body {
 }
 
 @media (max-width: 600px) {
-  // .container {
-  //   max-width: 375px;
-  // }
+  .container {
+    max-width: 375px;
+  }
 
   .step__number::before,
   .step__number::after {
