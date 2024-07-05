@@ -1,5 +1,6 @@
 :root {
   --primary-color: #ef7f1a;
+  --dark: #343a40;
 }
 
 * {
@@ -169,6 +170,11 @@ body {
 .tabs {
   width: 100%;
   overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--dark);
+  background-image: url('../img/bg-search-vin.webp');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 
   &__container {
     display: flex;
@@ -181,7 +187,6 @@ body {
   min-height: 400px;
   // height: fit-content;
   flex: 0 0 100%;
-  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px 20px;
 }
